@@ -84,14 +84,14 @@ $after_title = '</li>';
 
 
         // Primary SQL query    
-        $sql = "SELECT ID, post_title, DATE_FORMAT(post_date, '%Y') as post_year ";
-        $sql.= "FROM wp_posts YEAR(post_date)<" .date("Y");
-		    $sql.= " AND MONTH(post_date)=" .date("m");
-			  $sql.= " AND DAYOFMONTH(post_date)=" .date("d");
-			  $sql.= " AND post_status = 'publish' ";
-			  $sql.= " AND post_type = 'post' "; 
-			  $sql.= " AND post_password = '' ";
-			  $sql.= "ORDER BY post_date DESC";
+        $sql = "SELECT $wpdb->posts.ID, $wpdb->posts.post_title, DATE_FORMAT($wpdb->posts.post_date, '%Y') as post_year ";
+        $sql.= "FROM $wpdb->posts YEAR($wpdb->posts.post_date)<" .date("Y");
+		    $sql.= " AND MONTH($wpdb->posts.post_date)=" .date("m");
+			  $sql.= " AND DAYOFMONTH($wpdb->posts.post_date)=" .date("d");
+			  $sql.= " AND $wpdb->posts.post_status = 'publish' ";
+			  $sql.= " AND $wpdb->posts.post_type = 'post' "; 
+			  $sql.= " AND $wpdb->posts.post_password = '' ";
+			  $sql.= "ORDER BY $wpdb->posts.post_date DESC";
 
 			 
 
